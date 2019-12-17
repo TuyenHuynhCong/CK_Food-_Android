@@ -52,13 +52,15 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
         TextView priceTextView = (TextView) listItemView.findViewById(R.id.item_price);
         priceTextView.setText("Price " + currentfastfood.getItemPrice());
 
+        final TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
+        quantityTextView.setText(String.valueOf(quantity));
 
         Button plus = (Button) listItemView.findViewById(R.id.plus_btn);
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 quantity = quantity + 1;
-
+                quantityTextView.setText(String.valueOf(quantity));
             }
         });
 
@@ -67,8 +69,15 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
             @Override
             public void onClick(View view) {
 
-                if (quantity > 0) quantity = quantity + 1;
-                else quantity = quantity;
+                if (quantity > 0) {
+                    quantity = quantity - 1;
+                    quantityTextView.setText(String.valueOf(quantity));
+                }
+                else {
+                    quantity = quantity;
+                    quantityTextView.setText(String.valueOf(quantity));
+
+                }
 
             }
         });
@@ -78,8 +87,7 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
         value = Integer.parseInt(hold);
         quantity = value + quantity;
 
-        TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
-        quantityTextView.setText(String.valueOf(quantity));
+
 
         Button cart_btn = (Button) listItemView.findViewById(R.id.cart_btn);
         cart_btn.setTag(position);

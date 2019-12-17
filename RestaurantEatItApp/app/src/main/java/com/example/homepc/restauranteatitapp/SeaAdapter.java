@@ -17,12 +17,14 @@ import java.util.ArrayList;
  */
 
 public class SeaAdapter extends ArrayAdapter<SeaClass> {
-    int quantity = 0; int i = 0;
-    int value = 0; String hold = "";
+    int quantity = 0;
+    int i = 0;
+    int value = 0;
+    String hold = "";
     int pos = 0, counter = 1;
-    String [] order_details = new String[1000];
+    String[] order_details = new String[1000];
     DatabaseHelper mydb;
-    String Number,Name,Quantity,Price = "";
+    String Number, Name, Quantity, Price = "";
 
 
     public SeaAdapter(Activity context, ArrayList<SeaClass> sea_food) {
@@ -52,11 +54,15 @@ public class SeaAdapter extends ArrayAdapter<SeaClass> {
         priceTextView.setText("Price " + currentseafood.getItemPrice());
 
 
+        final TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
+        quantityTextView.setText(String.valueOf(quantity));
+
         Button plus = (Button) listItemView.findViewById(R.id.plus_btn);
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 quantity = quantity + 1;
+                quantityTextView.setText(String.valueOf(quantity));
 
             }
         });
@@ -66,8 +72,15 @@ public class SeaAdapter extends ArrayAdapter<SeaClass> {
             @Override
             public void onClick(View view) {
 
-                if (quantity > 0) quantity = quantity + 1;
-                else quantity = quantity;
+                if (quantity > 0) {
+                    quantity = quantity - 1;
+                    quantityTextView.setText(String.valueOf(quantity));
+
+                } else {
+                    quantity = quantity;
+                    quantityTextView.setText(String.valueOf(quantity));
+
+                }
 
             }
         });
@@ -76,8 +89,6 @@ public class SeaAdapter extends ArrayAdapter<SeaClass> {
         value = Integer.parseInt(hold);
         quantity = value + quantity;
 
-        TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
-        quantityTextView.setText(String.valueOf(quantity));
 
         Button cart_btn = (Button) listItemView.findViewById(R.id.cart_btn);
         cart_btn.setTag(position);
@@ -86,30 +97,25 @@ public class SeaAdapter extends ArrayAdapter<SeaClass> {
             @Override
             public void onClick(View view) {
                 //cart_btn.setEnabled(false);
-                pos = (Integer)view.getTag();
-                if(quantity != 0) { //if quan < 0 or equals to 0
+                pos = (Integer) view.getTag();
+                if (quantity != 0) { //if quan < 0 or equals to 0
                     if (pos == 0) {
-                        boolean isinserted = mydb.Add_to_Cart("Finger Fish",String.valueOf(quantity),String.valueOf(600*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
+                        boolean isinserted = mydb.Add_to_Cart("Finger Fish", String.valueOf(quantity), String.valueOf(600 * quantity), SignInPage.a);
+                        if (isinserted) {
                             int price = 1; //price * quantity = total price
                             order_details[i] = "Id " + counter + " Finger Fish Price Rs " + 600 * quantity + " ";
                             counter++;  //var use for no of items order
                             i++;  //var uses to store data in array */
                             quantity = 0;  //holds the value for each item quantity*s/
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
-                        }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
-
-
 
 
                     }
                     if (pos == 1) {
-                        boolean isinserted =  mydb.Add_to_Cart("Shrimp",String.valueOf(quantity),String.valueOf(900*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
+                        boolean isinserted = mydb.Add_to_Cart("Shrimp", String.valueOf(quantity), String.valueOf(900 * quantity), SignInPage.a);
+                        if (isinserted) {
                             int price = 1;
                             order_details[i] = "Id " + counter + " Shrimp Price Rs " + 900 * quantity + " ";
                             counter++;
@@ -117,18 +123,14 @@ public class SeaAdapter extends ArrayAdapter<SeaClass> {
                             quantity = 0;
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
-
-
 
 
                     }
                     if (pos == 2) {
-                        boolean isinserted = mydb.Add_to_Cart("Fried Fish",String.valueOf(quantity),String.valueOf(650*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
+                        boolean isinserted = mydb.Add_to_Cart("Fried Fish", String.valueOf(quantity), String.valueOf(650 * quantity), SignInPage.a);
+                        if (isinserted) {
                             int price = 1;
                             order_details[i] = "Id : " + counter + " Fried Fish Price Rs " + 650 * quantity + " ";
                             counter++;
@@ -136,20 +138,15 @@ public class SeaAdapter extends ArrayAdapter<SeaClass> {
                             quantity = 0;
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
-
-
-
 
 
                     }
                     if (pos == 3) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Prawn Soup",String.valueOf(quantity),String.valueOf(450*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
+                        boolean isinserted = mydb.Add_to_Cart("Prawn Soup", String.valueOf(quantity), String.valueOf(450 * quantity), SignInPage.a);
+                        if (isinserted) {
                             int price = 1;
                             order_details[i] = "Id " + counter + " Prawn Soup Price Rs " + 450 * quantity + " ";
                             counter++;
@@ -157,25 +154,20 @@ public class SeaAdapter extends ArrayAdapter<SeaClass> {
                             quantity = 0;
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
-
-
-
 
 
                     }
 
 
-                } else {  Toast.makeText(getContext(), "Quantity value can't be zero or lesser!!!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Quantity value can't be zero or lesser!!!", Toast.LENGTH_SHORT).show();
 
                     int j = 0;
-                    Toast.makeText(getContext(), "" + order_details[j] + "\n" + order_details[j+1] + "\n"+ order_details[j+2] + "\n" + order_details[j+3], Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "" + order_details[j] + "\n" + order_details[j + 1] + "\n" + order_details[j + 2] + "\n" + order_details[j + 3], Toast.LENGTH_LONG).show();
 
                 }
-
-
 
 
             }

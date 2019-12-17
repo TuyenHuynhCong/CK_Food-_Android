@@ -51,12 +51,15 @@ public class ContinentalAdapter extends ArrayAdapter<ContinentalClass> {
         TextView priceTextView = (TextView) listItemView.findViewById(R.id.item_price);
         priceTextView.setText("Price " + currentcontifood.getItemPrice() );
 
+        final TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
+        quantityTextView.setText(String.valueOf(Contiquantity));
 
         Button plus = (Button) listItemView.findViewById(R.id.plus_btn);
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Contiquantity = Contiquantity + 1;
+                quantityTextView.setText(String.valueOf(Contiquantity));
 
             }
         });
@@ -66,8 +69,14 @@ public class ContinentalAdapter extends ArrayAdapter<ContinentalClass> {
             @Override
             public void onClick(View view) {
 
-                if (Contiquantity > 0) Contiquantity = Contiquantity + 1;
-                else Contiquantity = Contiquantity;
+                if (Contiquantity > 0) {
+                    Contiquantity = Contiquantity - 1;
+                    quantityTextView.setText(String.valueOf(Contiquantity));
+                }
+                else {
+                    Contiquantity = Contiquantity;
+                    quantityTextView.setText(String.valueOf(Contiquantity));
+                }
 
             }
         });
@@ -78,8 +87,7 @@ public class ContinentalAdapter extends ArrayAdapter<ContinentalClass> {
         Contivalue = Integer.parseInt(Contihold);
         Contiquantity = Contivalue + Contiquantity;
 
-        TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
-        quantityTextView.setText(String.valueOf(Contiquantity));
+
 
         Button cart_btn = (Button) listItemView.findViewById(R.id.cart_btn);
         cart_btn.setTag(position);

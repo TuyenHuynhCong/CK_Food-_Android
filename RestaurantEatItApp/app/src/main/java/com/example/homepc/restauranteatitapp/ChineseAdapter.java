@@ -23,14 +23,14 @@ import java.util.ArrayList;
  */
 
 public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
-    int quantity = 0; int i = 0;
-    int value = 0; String hold = "";
+    int quantity = 0;
+    int i = 0;
+    int value = 0;
+    String hold = "";
     int pos = 0, counter = 1;
-    String [] order_details = new String[1000];
+    String[] order_details = new String[1000];
     DatabaseHelper mydb;
-    String Number,Name,Quantity,Price = "";
-
-
+    String Number, Name, Quantity, Price = "";
 
 
     public ChineseAdapter(Activity context, ArrayList<ChineseClass> c_food) {
@@ -55,42 +55,45 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
         nameTextView.setText(currentcfood.getItemName());
 
         TextView priceTextView = (TextView) listItemView.findViewById(R.id.item_price);
-        priceTextView.setText("Price " + currentcfood.getItemPrice() );
+        priceTextView.setText("Price " + currentcfood.getItemPrice());
 
-
-
-       Button plus = (Button) listItemView.findViewById(R.id.plus_btn);
+        final TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
+        quantityTextView.setText(String.valueOf(quantity));
+        Button plus = (Button) listItemView.findViewById(R.id.plus_btn);
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
                 quantity = quantity + 1;
+                quantityTextView.setText(String.valueOf(quantity));
 
             }
         });
 
         Button minus = (Button) listItemView.findViewById(R.id.minus_btn);
+
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-                if (quantity > 0) quantity = quantity - 1;
-                else quantity = quantity;
+                if (quantity > 0) {
+                    quantity = quantity - 1;
+                    quantityTextView.setText(String.valueOf(quantity));
+                } else {
+                    quantity = quantity;
+                    quantityTextView.setText(String.valueOf(quantity));
+                }
+
 
             }
         });
 
 
-
         hold = currentcfood.getItemquantity();
         value = Integer.parseInt(hold);
         quantity = value + quantity;
-
-        TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
-        quantityTextView.setText(String.valueOf(quantity));
-
 
 
         Button cart_btn = (Button) listItemView.findViewById(R.id.cart_btn);
@@ -101,37 +104,30 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
             public void onClick(View view) {
 
 
-
-
                 //cart_btn.setEnabled(false);
-                pos = (Integer)view.getTag();
-                if(quantity != 0) { //if quan < 0 or equals to 0
+                pos = (Integer) view.getTag();
+                if (quantity != 0) { //if quan < 0 or equals to 0
                     if (pos == 0) {
 
-                     boolean isinserted = mydb.Add_to_Cart("Fried Rice",String.valueOf(quantity),String.valueOf(550*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
-                            System.out.println("ida :"+SignInPage.ida);
+                        boolean isinserted = mydb.Add_to_Cart("Fried Rice", String.valueOf(quantity), String.valueOf(550 * quantity), SignInPage.a);
+                        if (isinserted) {
+                            System.out.println("ida :" + SignInPage.ida);
 
 
                             int price = 1; //price * quantity = total price
-                           order_details[i] = "Id " + counter + " Fried Rice Price Rs " + 150 * quantity + " ";
+                            order_details[i] = "Id " + counter + " Fried Rice Price Rs " + 150 * quantity + " ";
                             counter++;  //var use for no of items order
                             i++;  //var uses to store data in array */
                             quantity = 0;  //holds the value for each item quantity*s/
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
-                    }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
-
-
 
 
                     }
                     if (pos == 1) {
-                        boolean isinserted =  mydb.Add_to_Cart("Sushi",String.valueOf(quantity),String.valueOf(550*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
+                        boolean isinserted = mydb.Add_to_Cart("Sushi", String.valueOf(quantity), String.valueOf(550 * quantity), SignInPage.a);
+                        if (isinserted) {
                             int price = 1;
                             order_details[i] = "Id " + counter + " Sushi Price Rs " + 550 * quantity + " ";
                             counter++;
@@ -139,18 +135,14 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
                             quantity = 0;
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
-
-
 
 
                     }
                     if (pos == 2) {
-                        boolean isinserted = mydb.Add_to_Cart("Haka Noodles",String.valueOf(quantity),String.valueOf(250*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
+                        boolean isinserted = mydb.Add_to_Cart("Haka Noodles", String.valueOf(quantity), String.valueOf(250 * quantity), SignInPage.a);
+                        if (isinserted) {
                             int price = 1;
                             order_details[i] = "Id : " + counter + " Haka Noodles Price Rs " + 250 * quantity + " ";
                             counter++;
@@ -158,20 +150,15 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
                             quantity = 0;
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
-
-
-
 
 
                     }
                     if (pos == 3) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Corn Soup",String.valueOf(quantity),String.valueOf(100*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
+                        boolean isinserted = mydb.Add_to_Cart("Corn Soup", String.valueOf(quantity), String.valueOf(100 * quantity), SignInPage.a);
+                        if (isinserted) {
                             int price = 1;
                             order_details[i] = "Id " + counter + " Corn Soup Price Rs " + 100 * quantity + " ";
                             counter++;
@@ -179,30 +166,24 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
                             quantity = 0;
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
-
-
-
 
 
                     }
 
 
-                } else {  Toast.makeText(getContext(), "Quantity value can't be zero or lesser!!!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), "Quantity value can't be zero or lesser!!!", Toast.LENGTH_SHORT).show();
 
                     int j = 0;
-                    Toast.makeText(getContext(), "" + order_details[j] + "\n" + order_details[j+1] + "\n"+ order_details[j+2] + "\n" + order_details[j+3]+ "\n" + order_details[j+4], Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "" + order_details[j] + "\n" + order_details[j + 1] + "\n" + order_details[j + 2] + "\n" + order_details[j + 3] + "\n" + order_details[j + 4], Toast.LENGTH_LONG).show();
 
                 }
 
 
-
-
-                    }
-                });
-
+            }
+        });
 
 
         return listItemView;

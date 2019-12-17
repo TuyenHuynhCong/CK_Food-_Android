@@ -20,12 +20,14 @@ import java.util.List;
  */
 
 public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
-    int quantity = 0; int i = 0;
-    int value = 0; String hold = "";
+    int quantity = 0;
+    int i = 0;
+    int value = 0;
+    String hold = "";
     int pos = 0, counter = 1;
-    String [] order_details = new String[1000];
+    String[] order_details = new String[1000];
     DatabaseHelper mydb;
-    String Number,Name,Quantity,Price = "";
+    String Number, Name, Quantity, Price = "";
 
 
     public ItalianAdapter(Activity context, ArrayList<ItalianClass> i_food) {
@@ -37,7 +39,7 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
-        if(listItemView == null) {
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.menu_design, parent, false);
         }
@@ -51,14 +53,18 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
         nameTextView.setText(currenti_food.getItemName());
 
         TextView priceTextView = (TextView) listItemView.findViewById(R.id.item_price);
-        priceTextView.setText("Price " + currenti_food.getItemPrice() );
+        priceTextView.setText("Price " + currenti_food.getItemPrice());
 
+
+        final TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
+        quantityTextView.setText(String.valueOf(quantity));
 
         Button plus = (Button) listItemView.findViewById(R.id.plus_btn);
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 quantity = quantity + 1;
+                quantityTextView.setText(String.valueOf(quantity));
 
             }
         });
@@ -68,8 +74,13 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
             @Override
             public void onClick(View view) {
 
-                if (quantity > 0) quantity = quantity + 1;
-                else quantity = quantity;
+                if (quantity > 0) {
+                    quantity = quantity - 1;
+                    quantityTextView.setText(String.valueOf(quantity));
+                } else {
+                    quantity = quantity;
+                    quantityTextView.setText(String.valueOf(quantity));
+                }
 
             }
         });
@@ -78,8 +89,6 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
         value = Integer.parseInt(hold);
         quantity = value + quantity;
 
-        TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
-        quantityTextView.setText(String.valueOf(quantity));
 
         Button cart_btn = (Button) listItemView.findViewById(R.id.cart_btn);
         cart_btn.setTag(position);
@@ -89,30 +98,25 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
             @Override
             public void onClick(View view) {
                 //cart_btn.setEnabled(false);
-                pos = (Integer)view.getTag();
-                if(quantity != 0) { //if quan < 0 or equals to 0
+                pos = (Integer) view.getTag();
+                if (quantity != 0) { //if quan < 0 or equals to 0
                     if (pos == 0) {
-                        boolean isinserted = mydb.Add_to_Cart("Pasta",String.valueOf(quantity),String.valueOf(450*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
+                        boolean isinserted = mydb.Add_to_Cart("Pasta", String.valueOf(quantity), String.valueOf(450 * quantity), SignInPage.a);
+                        if (isinserted) {
                             int price = 1; //price * quantity = total price
                             order_details[i] = "Id " + counter + " Pasta Price Rs " + 450 * quantity + " ";
                             counter++;  //var use for no of items order
                             i++;  //var uses to store data in array */
                             quantity = 0;  //holds the value for each item quantity*s/
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
-                        }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
-
-
 
 
                     }
                     if (pos == 1) {
-                        boolean isinserted =  mydb.Add_to_Cart("Lasagna",String.valueOf(quantity),String.valueOf(650*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
+                        boolean isinserted = mydb.Add_to_Cart("Lasagna", String.valueOf(quantity), String.valueOf(650 * quantity), SignInPage.a);
+                        if (isinserted) {
                             int price = 1;
                             order_details[i] = "Id " + counter + " Lasagna Price Rs " + 650 * quantity + " ";
                             counter++;
@@ -120,18 +124,14 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
                             quantity = 0;
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
-
-
 
 
                     }
                     if (pos == 2) {
-                        boolean isinserted = mydb.Add_to_Cart("Italian Pizza",String.valueOf(quantity),String.valueOf(1250*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
+                        boolean isinserted = mydb.Add_to_Cart("Italian Pizza", String.valueOf(quantity), String.valueOf(1250 * quantity), SignInPage.a);
+                        if (isinserted) {
                             int price = 1;
                             order_details[i] = "Id : " + counter + " Italian Pizza Price Rs " + 1250 * quantity + " ";
                             counter++;
@@ -139,20 +139,15 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
                             quantity = 0;
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
-
-
-
 
 
                     }
                     if (pos == 3) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Focaccia Bread",String.valueOf(quantity),String.valueOf(450*quantity),SignInPage.a);
-                        if (isinserted)
-                        {
+                        boolean isinserted = mydb.Add_to_Cart("Focaccia Bread", String.valueOf(quantity), String.valueOf(450 * quantity), SignInPage.a);
+                        if (isinserted) {
                             int price = 1;
                             order_details[i] = "Id " + counter + " Focaccia Bread Price Rs " + 450 * quantity + " ";
                             counter++;
@@ -160,27 +155,21 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
                             quantity = 0;
                             Toast.makeText(getContext(), "Order Added Successfully !", Toast.LENGTH_SHORT).show();
 
-                        }
-                        else
+                        } else
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(getContext(), "Quantity value can't be zero or lesser!!!", Toast.LENGTH_SHORT).show();
+
+                        int j = 0;
+                        Toast.makeText(getContext(), "" + order_details[j] + "\n" + order_details[j + 1] + "\n" + order_details[j + 2] + "\n" + order_details[j + 3], Toast.LENGTH_LONG).show();
 
                     }
 
 
-                 else {  Toast.makeText(getContext(), "Quantity value can't be zero or lesser!!!", Toast.LENGTH_SHORT).show();
-
-                    int j = 0;
-                    Toast.makeText(getContext(), "" + order_details[j] + "\n" + order_details[j+1] + "\n"+ order_details[j+2] + "\n" + order_details[j+3], Toast.LENGTH_LONG).show();
-
                 }
-
-
-
-
 
             }
-
-                }
         });
 
 
