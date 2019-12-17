@@ -91,7 +91,7 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
                 pos = (Integer)view.getTag();
                 if(quantity != 0) { //if quan < 0 or equals to 0
                     if (pos == 0) {
-                        boolean isinserted = mydb.Add_to_Cart("Beef Burger",String.valueOf(quantity),String.valueOf(250*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Beef Burger",String.valueOf(quantity),String.valueOf(250*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1; //price * quantity = total price
@@ -109,7 +109,7 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
 
                     }
                     if (pos == 1) {
-                        boolean isinserted =  mydb.Add_to_Cart("Chicken Burger",String.valueOf(quantity),String.valueOf(220*quantity));
+                        boolean isinserted =  mydb.Add_to_Cart("Chicken Burger",String.valueOf(quantity),String.valueOf(220*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -128,7 +128,7 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
 
                     }
                     if (pos == 2) {
-                        boolean isinserted = mydb.Add_to_Cart("Zinger Burger",String.valueOf(quantity),String.valueOf(350*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Zinger Burger",String.valueOf(quantity),String.valueOf(350*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -149,7 +149,7 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
                     }
                     if (pos == 3) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Fries",String.valueOf(quantity),String.valueOf(120*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Fries",String.valueOf(quantity),String.valueOf(120*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -166,7 +166,7 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
                     }
                     if (pos == 4) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Zinger Roll",String.valueOf(quantity),String.valueOf(200*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Zinger Roll",String.valueOf(quantity),String.valueOf(200*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -184,7 +184,7 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
 
                     if (pos == 5) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Club Sandwich",String.valueOf(quantity),String.valueOf(250*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Club Sandwich",String.valueOf(quantity),String.valueOf(250*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -202,7 +202,7 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
 
                     if (pos == 6) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Chicken Wings",String.valueOf(quantity),String.valueOf(170*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Chicken Wings",String.valueOf(quantity),String.valueOf(170*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -220,7 +220,7 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
 
                     if (pos == 7) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Chicken Broast",String.valueOf(quantity),String.valueOf(550*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Chicken Broast",String.valueOf(quantity),String.valueOf(550*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -238,7 +238,7 @@ public class FastFoodAdapter extends ArrayAdapter<FastfoodClass> {
 
                     if (pos == 8) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Chicken Nuggets",String.valueOf(quantity),String.valueOf(200*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Chicken Nuggets",String.valueOf(quantity),String.valueOf(200*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;

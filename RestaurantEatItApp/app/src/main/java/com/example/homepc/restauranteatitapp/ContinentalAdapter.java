@@ -93,7 +93,7 @@ public class ContinentalAdapter extends ArrayAdapter<ContinentalClass> {
                 Contipos = (Integer)view.getTag();
                 if(Contiquantity != 0) { //if quan < 0 or equals to 0
                     if (Contipos == 0) {
-                        boolean isinserted = mydb.Add_to_Cart("Salsa",String.valueOf(Contiquantity),String.valueOf(650*Contiquantity));
+                        boolean isinserted = mydb.Add_to_Cart("Salsa",String.valueOf(Contiquantity),String.valueOf(650*Contiquantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1; //price * quantity = total price
@@ -111,7 +111,7 @@ public class ContinentalAdapter extends ArrayAdapter<ContinentalClass> {
 
                     }
                     if (Contipos == 1) {
-                        boolean isinserted =  mydb.Add_to_Cart("Arabic Pizza",String.valueOf(Contiquantity),String.valueOf(1150*Contiquantity));
+                        boolean isinserted =  mydb.Add_to_Cart("Arabic Pizza",String.valueOf(Contiquantity),String.valueOf(1150*Contiquantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -130,7 +130,7 @@ public class ContinentalAdapter extends ArrayAdapter<ContinentalClass> {
 
                     }
                     if (Contipos == 2) {
-                        boolean isinserted = mydb.Add_to_Cart("Macaroni ",String.valueOf(Contiquantity),String.valueOf(250*Contiquantity));
+                        boolean isinserted = mydb.Add_to_Cart("Macaroni ",String.valueOf(Contiquantity),String.valueOf(250*Contiquantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -151,7 +151,7 @@ public class ContinentalAdapter extends ArrayAdapter<ContinentalClass> {
                     }
                     if (Contipos == 3) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Pan Burger",String.valueOf(Contiquantity),String.valueOf(190*Contiquantity));
+                        boolean isinserted = mydb.Add_to_Cart("Pan Burger",String.valueOf(Contiquantity),String.valueOf(190*Contiquantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;

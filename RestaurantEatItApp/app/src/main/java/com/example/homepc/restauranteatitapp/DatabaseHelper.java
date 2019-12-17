@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import static com.example.homepc.restauranteatitapp.SignInPage.a;
+import static com.example.homepc.restauranteatitapp.SignInPage.ida;
+
 /**
  * Created by HomePC on 1/9/2018.
  */
@@ -29,6 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     public  static final String KEY_2 = "ItemName";
     public  static final String KEY_3 = "ItemQuantity";
     public  static final String KEY_4 = "ItemPrice";
+    public  static final String KEY_5 = "ItemIda";
 
 
 
@@ -42,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE " + TABLE_NAME +" (id integer primary key autoincrement,name text,password text) "   );
-        db.execSQL("CREATE TABLE " + TABLE_NAME_2 +" (orderno integer primary key autoincrement,itemname text,itemquantity text,itemprice text) "   );
+        db.execSQL("CREATE TABLE " + TABLE_NAME_2 +" (orderno integer primary key autoincrement,itemname text,itemquantity text,itemprice text,itemida text) "   );
 
 
     }
@@ -73,6 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     }
     public Cursor CheckAccount(String searchstr){
+
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM Customers WHERE Name LIKE '%"+searchstr+"%'", null);
         if(cursor != null){
@@ -84,12 +89,13 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
                                    //ORDER DETAILS DATABASE WORK
 
-    public boolean Add_to_Cart(String Name,String Quantity,String Price){
+    public boolean Add_to_Cart(String Name,String Quantity,String Price, String ida){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues1 = new ContentValues();
         contentValues1.put(KEY_2,Name);
         contentValues1.put(KEY_3,Quantity);
         contentValues1.put(KEY_4,Price);
+        contentValues1.put(KEY_5,ida);
         double check = db.insert(TABLE_NAME_2,null,contentValues1);
         if(check == -1) return false;
         else return true;
@@ -100,9 +106,25 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
     public Cursor Get_OrderDetails() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM "+ TABLE_NAME_2, null);
-        return data;
+//        Cursor data = db.rawQuery("SELECT * FROM "+ TABLE_NAME_2, null);
+
+
+        String query="SELECT * FROM OrderDetails WHERE ItemIda= ?";
+        String[] selectionArgs = {a};
+        Cursor data1 = db.rawQuery(query, selectionArgs);
+        return data1;
     }
+    public Cursor getOrderById( String idm) {
+        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor data = db.rawQuery("SELECT * FROM "+ TABLE_NAME_2, null);
+
+
+        String query="SELECT * FROM OrderDetails WHERE ItemIda= ?";
+        String[] selectionArgs = {idm};
+        Cursor data1 = db.rawQuery(query, selectionArgs);
+        return data1;
+    }
+
 
     public Integer delete_one(String id){
         SQLiteDatabase db = this.getWritableDatabase();

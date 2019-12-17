@@ -40,7 +40,7 @@ public class OrderPage extends AppCompatActivity {
         } else {
             while (data.moveToNext()) {
 
-                list.add(new OrderClass(data.getString(0),data.getString(1),data.getString(2),data.getString(3)));
+                list.add(new OrderClass(data.getString(0),data.getString(1),data.getString(2),data.getString(3),data.getString(4)));
 
             }
         }

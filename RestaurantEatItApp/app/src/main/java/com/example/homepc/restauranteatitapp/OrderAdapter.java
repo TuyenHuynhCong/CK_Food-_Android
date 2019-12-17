@@ -49,6 +49,8 @@ public class OrderAdapter extends ArrayAdapter<OrderClass> {
         TextView priceTextView = (TextView) listItemView.findViewById(R.id.order_item_price);
         priceTextView.setText("Price : "+data_item.getItemPrice() + "Rs");
 
+
+
         return listItemView;
     }
 

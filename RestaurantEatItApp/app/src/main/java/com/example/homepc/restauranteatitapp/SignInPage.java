@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SignInPage extends AppCompatActivity {
@@ -14,6 +15,10 @@ public class SignInPage extends AppCompatActivity {
     EditText signinName, signinPassword;
     Button signinbtn;
     String usernameSaver, passwordSaver;
+    static String a ;
+    public static  final String ida ="";
+
+
     boolean finalcheck;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +30,7 @@ public class SignInPage extends AppCompatActivity {
         signinbtn = (Button) findViewById(R.id.signinBtn);
         signinbtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public  void onClick(View v) {
                 String name_holder = "";
                 String password_holder = "";
                 if(signinName.getText().toString().equalsIgnoreCase("")||(signinPassword.getText().toString().equalsIgnoreCase("")))
@@ -48,6 +53,9 @@ public class SignInPage extends AppCompatActivity {
                     {
                         usernameSaver = name_holder;
                         passwordSaver = password_holder;
+
+                        a =  c.getString(c.getColumnIndex("id"));
+
                         Toast.makeText(getApplicationContext(),"Successfully Logged In !",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                         intent.putExtra("Name_marker",usernameSaver);
@@ -71,5 +79,12 @@ public class SignInPage extends AppCompatActivity {
 
             }
         });
+    }
+
+    /**
+     *
+     */
+    public static final String check (String a){
+        return a;
     }
 }

@@ -91,7 +91,7 @@ public class TraditionalFoodAdapter extends ArrayAdapter<TraditionalfoodClass> {
                 pos = (Integer)view.getTag();
                 if(quantity != 0) { //if quan < 0 or equals to 0
                     if (pos == 0) {
-                        boolean isinserted = mydb.Add_to_Cart("Karahi",String.valueOf(quantity),String.valueOf(1250*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Karahi",String.valueOf(quantity),String.valueOf(1250*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1; //price * quantity = total price
@@ -109,7 +109,7 @@ public class TraditionalFoodAdapter extends ArrayAdapter<TraditionalfoodClass> {
 
                     }
                     if (pos == 1) {
-                        boolean isinserted =  mydb.Add_to_Cart("Biryani",String.valueOf(quantity),String.valueOf(150*quantity));
+                        boolean isinserted =  mydb.Add_to_Cart("Biryani",String.valueOf(quantity),String.valueOf(150*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -128,7 +128,7 @@ public class TraditionalFoodAdapter extends ArrayAdapter<TraditionalfoodClass> {
 
                     }
                     if (pos == 2) {
-                        boolean isinserted = mydb.Add_to_Cart("Malai Boti",String.valueOf(quantity),String.valueOf(450*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Malai Boti",String.valueOf(quantity),String.valueOf(450*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -149,7 +149,7 @@ public class TraditionalFoodAdapter extends ArrayAdapter<TraditionalfoodClass> {
                     }
                     if (pos == 3) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Seekh Kabab",String.valueOf(quantity),String.valueOf(400*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Seekh Kabab",String.valueOf(quantity),String.valueOf(400*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -164,7 +164,7 @@ public class TraditionalFoodAdapter extends ArrayAdapter<TraditionalfoodClass> {
                             Toast.makeText(getContext(), "Please, Try again", Toast.LENGTH_SHORT).show();
                     }
                     if (pos == 4) {
-                        boolean isinserted =  mydb.Add_to_Cart("Tikka",String.valueOf(quantity),String.valueOf(250*quantity));
+                        boolean isinserted =  mydb.Add_to_Cart("Tikka",String.valueOf(quantity),String.valueOf(250*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -180,7 +180,7 @@ public class TraditionalFoodAdapter extends ArrayAdapter<TraditionalfoodClass> {
                     }
 
                     if (pos == 5) {
-                        boolean isinserted =  mydb.Add_to_Cart("Sajji",String.valueOf(quantity),String.valueOf(1550*quantity));
+                        boolean isinserted =  mydb.Add_to_Cart("Sajji",String.valueOf(quantity),String.valueOf(1550*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;

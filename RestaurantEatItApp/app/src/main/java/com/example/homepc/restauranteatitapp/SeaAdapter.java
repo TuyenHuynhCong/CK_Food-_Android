@@ -89,7 +89,7 @@ public class SeaAdapter extends ArrayAdapter<SeaClass> {
                 pos = (Integer)view.getTag();
                 if(quantity != 0) { //if quan < 0 or equals to 0
                     if (pos == 0) {
-                        boolean isinserted = mydb.Add_to_Cart("Finger Fish",String.valueOf(quantity),String.valueOf(600*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Finger Fish",String.valueOf(quantity),String.valueOf(600*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1; //price * quantity = total price
@@ -107,7 +107,7 @@ public class SeaAdapter extends ArrayAdapter<SeaClass> {
 
                     }
                     if (pos == 1) {
-                        boolean isinserted =  mydb.Add_to_Cart("Shrimp",String.valueOf(quantity),String.valueOf(900*quantity));
+                        boolean isinserted =  mydb.Add_to_Cart("Shrimp",String.valueOf(quantity),String.valueOf(900*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -126,7 +126,7 @@ public class SeaAdapter extends ArrayAdapter<SeaClass> {
 
                     }
                     if (pos == 2) {
-                        boolean isinserted = mydb.Add_to_Cart("Fried Fish",String.valueOf(quantity),String.valueOf(650*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Fried Fish",String.valueOf(quantity),String.valueOf(650*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -147,7 +147,7 @@ public class SeaAdapter extends ArrayAdapter<SeaClass> {
                     }
                     if (pos == 3) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Prawn Soup",String.valueOf(quantity),String.valueOf(450*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Prawn Soup",String.valueOf(quantity),String.valueOf(450*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;

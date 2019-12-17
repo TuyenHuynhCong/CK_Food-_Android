@@ -9,13 +9,15 @@ public class OrderClass {
     private String Itemname;
     private String Itemquantity;
     public String Itemprice;
+    public String ItemIda;
 
-    public OrderClass(String iId, String iName, String iQuantity,String iPrice)
+    public OrderClass(String iId, String iName, String iQuantity,String iPrice,String itemIda)
     {
         Itemid = iId;
         Itemname = iName;
         Itemquantity = iQuantity;
         Itemprice = iPrice;
+        itemIda = itemIda;
 
     }
 
@@ -32,5 +34,11 @@ public class OrderClass {
 
     public String getItemquantity() {return Itemquantity;}
 
+    public String getItemIda() {
+        return ItemIda;
+    }
 
+    public void setItemIda(String itemIda) {
+        ItemIda = itemIda;
+    }
 }

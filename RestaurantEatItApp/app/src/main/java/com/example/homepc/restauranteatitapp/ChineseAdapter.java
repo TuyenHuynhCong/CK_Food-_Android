@@ -31,6 +31,8 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
     String Number,Name,Quantity,Price = "";
 
 
+
+
     public ChineseAdapter(Activity context, ArrayList<ChineseClass> c_food) {
         super(context, 0, c_food);
         this.mydb = new DatabaseHelper(context.getApplicationContext());
@@ -44,7 +46,7 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
                     R.layout.menu_design, parent, false);
         }
 
-        ChineseClass currentcfood = getItem(position);
+        final ChineseClass currentcfood = getItem(position);
 
         ImageView imageView = (ImageView) listItemView.findViewById(R.id.item_image);
         imageView.setImageResource(currentcfood.getImageResourceId());
@@ -89,6 +91,8 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
         TextView quantityTextView = (TextView) listItemView.findViewById(R.id.quantity);
         quantityTextView.setText(String.valueOf(quantity));
 
+
+
         Button cart_btn = (Button) listItemView.findViewById(R.id.cart_btn);
         cart_btn.setTag(position);
 
@@ -97,13 +101,19 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
             public void onClick(View view) {
 
 
+
+
                 //cart_btn.setEnabled(false);
                 pos = (Integer)view.getTag();
                 if(quantity != 0) { //if quan < 0 or equals to 0
                     if (pos == 0) {
-                     boolean isinserted = mydb.Add_to_Cart("Fried Rice",String.valueOf(quantity),String.valueOf(550*quantity));
+
+                     boolean isinserted = mydb.Add_to_Cart("Fried Rice",String.valueOf(quantity),String.valueOf(550*quantity),SignInPage.a);
                         if (isinserted)
                         {
+                            System.out.println("ida :"+SignInPage.ida);
+
+
                             int price = 1; //price * quantity = total price
                            order_details[i] = "Id " + counter + " Fried Rice Price Rs " + 150 * quantity + " ";
                             counter++;  //var use for no of items order
@@ -119,7 +129,7 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
 
                     }
                     if (pos == 1) {
-                        boolean isinserted =  mydb.Add_to_Cart("Sushi",String.valueOf(quantity),String.valueOf(550*quantity));
+                        boolean isinserted =  mydb.Add_to_Cart("Sushi",String.valueOf(quantity),String.valueOf(550*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -138,7 +148,7 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
 
                     }
                     if (pos == 2) {
-                        boolean isinserted = mydb.Add_to_Cart("Haka Noodles",String.valueOf(quantity),String.valueOf(250*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Haka Noodles",String.valueOf(quantity),String.valueOf(250*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -159,7 +169,7 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
                     }
                     if (pos == 3) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Corn Soup",String.valueOf(quantity),String.valueOf(100*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Corn Soup",String.valueOf(quantity),String.valueOf(100*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -183,7 +193,7 @@ public class ChineseAdapter extends ArrayAdapter<ChineseClass> {
                 } else {  Toast.makeText(getContext(), "Quantity value can't be zero or lesser!!!", Toast.LENGTH_SHORT).show();
 
                     int j = 0;
-                    Toast.makeText(getContext(), "" + order_details[j] + "\n" + order_details[j+1] + "\n"+ order_details[j+2] + "\n" + order_details[j+3], Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "" + order_details[j] + "\n" + order_details[j+1] + "\n"+ order_details[j+2] + "\n" + order_details[j+3]+ "\n" + order_details[j+4], Toast.LENGTH_LONG).show();
 
                 }
 

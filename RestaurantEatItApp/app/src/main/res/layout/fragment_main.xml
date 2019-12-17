@@ -5,4 +5,8 @@
     android:background="@drawable/background"
     tools:context="com.example.homepc.restauranteatitapp.MainFragment">
 
+    <TextView
+        android:id="@+id/ida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

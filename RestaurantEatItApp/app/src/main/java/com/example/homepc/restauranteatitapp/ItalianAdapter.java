@@ -92,7 +92,7 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
                 pos = (Integer)view.getTag();
                 if(quantity != 0) { //if quan < 0 or equals to 0
                     if (pos == 0) {
-                        boolean isinserted = mydb.Add_to_Cart("Pasta",String.valueOf(quantity),String.valueOf(450*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Pasta",String.valueOf(quantity),String.valueOf(450*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1; //price * quantity = total price
@@ -110,7 +110,7 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
 
                     }
                     if (pos == 1) {
-                        boolean isinserted =  mydb.Add_to_Cart("Lasagna",String.valueOf(quantity),String.valueOf(650*quantity));
+                        boolean isinserted =  mydb.Add_to_Cart("Lasagna",String.valueOf(quantity),String.valueOf(650*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -129,7 +129,7 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
 
                     }
                     if (pos == 2) {
-                        boolean isinserted = mydb.Add_to_Cart("Italian Pizza",String.valueOf(quantity),String.valueOf(1250*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Italian Pizza",String.valueOf(quantity),String.valueOf(1250*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;
@@ -150,7 +150,7 @@ public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
                     }
                     if (pos == 3) {
 
-                        boolean isinserted = mydb.Add_to_Cart("Focaccia Bread",String.valueOf(quantity),String.valueOf(450*quantity));
+                        boolean isinserted = mydb.Add_to_Cart("Focaccia Bread",String.valueOf(quantity),String.valueOf(450*quantity),SignInPage.a);
                         if (isinserted)
                         {
                             int price = 1;

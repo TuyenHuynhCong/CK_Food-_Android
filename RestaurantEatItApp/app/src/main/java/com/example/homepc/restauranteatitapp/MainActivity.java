@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(),"Hello " + save1+ " , Welcome to Eat It Restaurant",Toast.LENGTH_SHORT).show();
          //   Toast.makeText(getApplicationContext(),save2,Toast.LENGTH_SHORT).show();
 
-
+        System.out.println();
         //DEFAULT FRAGMENT
 
         MainFragment fragment = new MainFragment();
@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                mydb.delete_all();
+                //mydb.delete_all();
                 Toast.makeText(getApplicationContext(),"Hope you like our service, Have a good day !!!",Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext(),LoginOptionsPage.class);
