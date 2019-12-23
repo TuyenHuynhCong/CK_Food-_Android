@@ -12,7 +12,7 @@ import static com.example.homepc.restauranteatitapp.SignInPage.a;
 import static com.example.homepc.restauranteatitapp.SignInPage.ida;
 
 /**
- * Created by HomePC on 1/9/2018.
+ * Created by Huỳnh Công Tuyển on 12/12/2019.
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper{

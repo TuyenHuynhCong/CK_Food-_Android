@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class SignInPage extends AppCompatActivity {
     DatabaseHelper myDB;
     EditText signinName, signinPassword;
-    Button signinbtn;
+    Button signinbtn, back;
     String usernameSaver, passwordSaver;
     static String a ;
     public static  final String ida ="";
@@ -28,6 +28,8 @@ public class SignInPage extends AppCompatActivity {
         signinName = (EditText) findViewById(R.id.signin_id);
         signinPassword = (EditText) findViewById(R.id.signin_password);
         signinbtn = (Button) findViewById(R.id.signinBtn);
+        back = findViewById(R.id.back);
+
         signinbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public  void onClick(View v) {
@@ -77,6 +79,17 @@ public class SignInPage extends AppCompatActivity {
 
                 }
 
+            }
+        });
+
+        //
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public  void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),LoginOptionsPage.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

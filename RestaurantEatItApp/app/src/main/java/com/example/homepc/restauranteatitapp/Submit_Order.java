@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Created by Huỳnh Công Tuyển on 12/12/2019.
  */
 public class Submit_Order extends Fragment {
 

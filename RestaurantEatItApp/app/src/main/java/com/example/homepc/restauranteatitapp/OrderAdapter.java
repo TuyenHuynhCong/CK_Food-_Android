@@ -13,7 +13,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 /**
- * Created by HomePC on 1/16/2018.
+ * Created by Huỳnh Công Tuyển on 12/12/2019.
  */
 
 public class OrderAdapter extends ArrayAdapter<OrderClass> {

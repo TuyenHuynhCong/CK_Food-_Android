@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class SignUpPage extends AppCompatActivity {
     DatabaseHelper myDB;
     EditText signupName, signupPassword;
-    Button addAccount;
+    Button addAccount,back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,7 @@ public class SignUpPage extends AppCompatActivity {
         signupName = (EditText) findViewById(R.id.signup_id);
         signupPassword = (EditText) findViewById(R.id.signup_password);
         addAccount = (Button) findViewById(R.id.add_account);
+        back = findViewById(R.id.back);
 
         Add_User();
 
@@ -69,7 +70,14 @@ public class SignUpPage extends AppCompatActivity {
 
             }
         });
-
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public  void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),LoginOptionsPage.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
     }

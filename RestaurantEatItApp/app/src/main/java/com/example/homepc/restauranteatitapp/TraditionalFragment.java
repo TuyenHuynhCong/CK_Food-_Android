@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Huỳnh Công Tuyển
  */
 public class TraditionalFragment extends Fragment {
 

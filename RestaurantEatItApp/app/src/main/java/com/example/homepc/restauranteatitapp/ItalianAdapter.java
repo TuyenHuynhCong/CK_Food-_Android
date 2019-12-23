@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by HomePC on 1/9/2018.
+ * Created by Huỳnh Công Tuyển on 12/12/2019.
  */
 
 public class ItalianAdapter extends ArrayAdapter<ItalianClass> {
